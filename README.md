@@ -5,6 +5,8 @@ This framework uses below dependency:
   badeball/cypress-cucumber-preprocessor
   cypress/webpack-preprocessor
 
+Continous Integration for this repo uses Github Actions CI
+
 Test website:
 
 https://parabank.parasoft.com/
