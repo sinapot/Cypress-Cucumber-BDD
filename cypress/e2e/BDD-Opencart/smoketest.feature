@@ -3,7 +3,7 @@ Feature: Parabank Features
     When I visit Opencart
     Then I should see Your Store
 
-  Scenario: Valid login
+  Scenario: Search iPhone
     Given I open login page
     When I enter my credentials
     Then I should be able to login
