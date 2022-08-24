@@ -1,14 +1,15 @@
 const { When, Then, Given, Before, And } = require("@badeball/cypress-cucumber-preprocessor");
 
 Before(()=>{
-    cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-    cy.get("input[placeholder='Username']").type("Admin");
-    cy.get("input[placeholder='Password']").type("admin123{enter}")
-    //cy.url().should("equal","https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList")
-
+    cy.session("login", () => {
+        cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+        cy.get("input[placeholder='Username']").type("Admin");
+        cy.get("input[placeholder='Password']").type("admin123{enter}")
+    })
 })
 
 Given ("I add an employee",()=>{
+    cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList")
     cy.url().should("equal","https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList")
     cy.contains("Add").click()
 })
@@ -23,6 +24,7 @@ Then ("employee should be added",()=>{
 })
 
 When ("I tick checkbox and delete employee",()=>{
+    cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList")
     cy.get(".oxd-table-card input").eq(0).click({force: true})
     cy.contains("Delete Selected").click({force: true})
     cy.contains("Yes").click()
@@ -33,6 +35,7 @@ Then ("selected employee should be deleted",()=>{
 })
 
 When ("I search for an employee",()=>{
+    cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList")
     cy.get("input[data-v-7c56a434]").eq(0).type("Alice")
     cy.get("[data-v-2fe357a6]  [data-v-013b3fcc] ").eq(2).click({force: true})
     cy.get("[role='listbox']").contains("Account Assistant").click();
@@ -44,6 +47,7 @@ Then ("search employee should be displayed",()=>{
 })
 
 When ("I click Reports",()=>{
+    cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList")
     cy.contains("Reports").click()
 })
 And ("click Employee Job Details reports",()=>{

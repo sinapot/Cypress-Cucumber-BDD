@@ -38,5 +38,6 @@ module.exports = defineConfig({
     specPattern: "**/*.feature",
     supportFile: false,
     setupNodeEvents,
+    experimentalSessionAndOrigin: true,
   },
 });
