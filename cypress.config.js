@@ -34,6 +34,7 @@ async function setupNodeEvents(on, config) {
 }
 
 module.exports = defineConfig({
+  projectId: "cgohm6",
   e2e: {
     specPattern: "**/*.feature",
     supportFile: false,
