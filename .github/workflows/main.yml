@@ -27,4 +27,9 @@ jobs:
         
       - name: Run tests
         run: npm test
+        record: true
+        #cypress dashboard config
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}          
       
