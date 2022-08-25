@@ -1,8 +1,8 @@
 # Cypress-Cucumber-BDD-POM
 
-**This is my Cypress Cucumber BDD framework where I explore and test Cypress BDD capabilities. This is a living code and will grow as I add more test cases that showcases Playwright capabilities.**
+**This is my Cypress Cucumber BDD framework where I explore and test Cypress BDD capabilities. This is a living code and will grow as I add more test cases that showcases Cypress BDD Cucumber capabilities.**
 
-**This framework uses below dependency:**
+**Framework dependencies:**
 
 1. badeball/cypress-cucumber-preprocessor
 2. cypress/webpack-preprocessor
