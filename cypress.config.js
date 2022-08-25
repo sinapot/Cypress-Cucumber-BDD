@@ -36,6 +36,7 @@ async function setupNodeEvents(on, config) {
 module.exports = defineConfig({
   projectId: "cgohm6",
   e2e: {
+    baseUrl: "https://opensource-demo.orangehrmlive.com/web/index.php",
     specPattern: "**/*.feature",
     supportFile: false,
     setupNodeEvents,

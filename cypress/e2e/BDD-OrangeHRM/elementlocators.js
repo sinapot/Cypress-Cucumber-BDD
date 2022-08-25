@@ -1,60 +1,52 @@
 const { When, Then, Given, Before, And } = require("@badeball/cypress-cucumber-preprocessor");
+import { addEmployeePage } from "./pageobjects/addemployeePage";
+import { pimPage } from "./pageobjects/employeeList";
+import { loginPage } from "./pageobjects/loginPage";
+import { reportsPage } from "./pageobjects/reportspage";
 
-
-//login helper function wrapped in cy session
-const login = ()=>{
-    cy.session("login", () => {
-        cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-        cy.get("input[placeholder='Username']").type("Admin");
-        cy.get("input[placeholder='Password']").type("admin123{enter}")
-    })
-    cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList")
-}
-
-//call the login function and restore the session
+//call the login helper function and restore the session
 Before(()=>{
-    login()
+    //use page object to login, cy.session is also captured there
+    loginPage.loginsession();
 })
 
 Given ("I add an employee",()=>{
-    cy.url().should("equal","https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList")
-    cy.contains("Add").click()
+    cy.url().should("include","/pim/viewEmployeeList")
+    pimPage.clickAddBtn()
 })
 When ("fill out the form and save",()=>{
-    cy.get("input[placeholder='First Name']").type("Juan")
-    cy.get("input[placeholder='Middle Name']").type("Dela")
-    cy.get("input[placeholder='Last Name']").type("Cruz")
-    cy.contains("Save").click()
+    // use pageobjects
+    addEmployeePage.addemployee("Juan","Dela","Cruz");
 })
 Then ("employee should be added",()=>{
     cy.contains("Successfully Saved").should("be.visible")
 })
 
 When ("I tick checkbox and delete employee",()=>{
-    cy.get(".oxd-table-card input").eq(0).click({force: true})
-    cy.contains("Delete Selected").click({force: true})
-    cy.contains("Yes").click()
-
+    // use pageobjects
+    pimPage.tickfirstcheckbox();
+    pimPage.clickDeleteBtn();
+    pimPage.clickYes();
 })
 Then ("selected employee should be deleted",()=>{
     cy.contains("Successfully Deleted").should("be.visible")
 })
 
 When ("I search for an employee",()=>{
-    cy.get("input[data-v-7c56a434]").eq(0).type("Alice")
-    cy.get("[data-v-2fe357a6]  [data-v-013b3fcc] ").eq(2).click({force: true})
-    cy.get("[role='listbox']").contains("Account Assistant").click();
-    cy.contains("Search").click({force: true})
+    // use pageobjects
+    pimPage.searchforrole("John");
 })
 Then ("search employee should be displayed",()=>{
-    cy.get(".orangehrm-paper-container").contains("Account Assistant").should("be.visible");
+    cy.get(".orangehrm-paper-container").contains("Chief Executive Officer").should("be.visible");
 })
 
 When ("I click Reports",()=>{
-    cy.contains("Reports").click()
+    // use pageobjects
+    pimPage.clickreports();
 })
 And ("click Employee Job Details reports",()=>{
-    cy.get("[data-v-9971f952]").eq(3).find("button[data-v-654f8522]").eq(2).click()
+    // use pageobjects
+    reportsPage.clickreportsbtn();
 })
 Then ("Employee Job Details should be displayed",()=>{
     cy.get(".orangehrm-card-container").contains("Employee Job Details").should("be.visible")
