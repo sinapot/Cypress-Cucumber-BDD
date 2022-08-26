@@ -8,10 +8,10 @@ Feature: API automation
     When I send GET request
     Then I should receive pet information
 
-  # Scenario: PUT to update an existing pet
-  #   When I send PUT request
-  #   Then existing pet is updated
+  Scenario: PUT to update an existing pet
+    When I send PUT request
+    Then existing pet is updated
 
-  # Scenario: DELETE to delete a pet
-  #   When I send DELETE request
-  #   Then existing pet is deleted
+  Scenario: DELETE to delete a pet
+    When I send DELETE request
+    Then existing pet is deleted
