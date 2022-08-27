@@ -21,7 +21,7 @@ export default class PIMPage{
         return cy.get("[data-v-2fe357a6]  [data-v-013b3fcc] ").eq(2)
     }
     get dropdownlist(){
-        return cy.get("[role='listbox']").contains("Chief Executive Officer")
+        return cy.get("[role='listbox']").contains("Software Engineer")
     }
     get searchbtn(){
         return cy.contains("Search")

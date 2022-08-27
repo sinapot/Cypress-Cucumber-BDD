@@ -34,10 +34,10 @@ Then ("selected employee should be deleted",()=>{
 
 When ("I search for an employee",()=>{
     // use pageobjects
-    pimPage.searchforrole("John");
+    pimPage.searchforrole("Lisa");
 })
 Then ("search employee should be displayed",()=>{
-    cy.get(".orangehrm-paper-container").contains("Chief Executive Officer").should("be.visible");
+    cy.get(".orangehrm-paper-container").contains("Software Engineer").should("be.visible");
 })
 
 When ("I click Reports",()=>{
