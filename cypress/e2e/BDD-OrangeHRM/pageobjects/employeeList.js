@@ -52,7 +52,14 @@ export default class PIMPage{
         this.dropdownlist.click();
         this.searchbtn.click({force: true});
     }
-
+    clickJobTitleDropown(){
+        //clicks dropdown list
+        this.jobtitledropdown.click({force: true})
+        //clicks for Software Engineer hardcoded
+        this.dropdownlist.click();
+        this.searchbtn.click({force: true});
+        
+    }
     clickreports(){
         this.reportsbtn.click();
     }
