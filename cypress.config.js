@@ -4,10 +4,8 @@ const preprocessor = require("@badeball/cypress-cucumber-preprocessor");
 
 async function setupNodeEvents(on, config) {
   await preprocessor.addCucumberPreprocessorPlugin(on, config);
-
   on(
-    "file:preprocessor",
-    webpack({
+    "file:preprocessor", webpack({
       webpackOptions: {
         resolve: {
           extensions: [".ts", ".js"],
